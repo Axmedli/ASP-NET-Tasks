@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ASP NET 20. TaskFlow FIle attachment</name>
+    </assembly>
+    <members>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController">
+            <summary>
+            Controller for managing projects.
+            </summary>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.#ctor(ASP_NET_20._TaskFlow_FIle_attachment.Services.IProjectService,Microsoft.AspNetCore.Authorization.IAuthorizationService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController"/> class.
+            </summary>
+            <param name="projectService">Service for project operations.</param>
+            <param name="authorizationService">Service for authorization checks.</param>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.Create(ASP_NET_20._TaskFlow_FIle_attachment.DTOs.CreateProjectDto)">
+            <summary>
+            Creates a new project.
+            </summary>
+            <param name="createProjectDto">The payload used to create the project.</param>
+            <returns>The created project wrapped in <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.Common.ApiResponse`1"/>.</returns>
+            <response code="201">The project was successfully created.</response>
+            <response code="400">The request body is invalid.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.GetById(System.Int32)">
+            <summary>
+            Retrieves a project by its identifier.
+            </summary>
+            <param name="id">The project identifier.</param>
+            <returns>The project details wrapped in <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.Common.ApiResponse`1"/>.</returns>
+            <response code="200">The project was found and returned.</response>
+            <response code="404">A project with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.GetAll">
+            <summary>
+            Retrieves all projects.
+            </summary>
+            <returns>A list of all projects wrapped in"/>.</returns>
+            <response code="200">Returns the list of projects.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.Update(System.Int32,ASP_NET_20._TaskFlow_FIle_attachment.DTOs.UpdateProjectDto)">
+            <summary>
+            Updates an existing project.
+            </summary>
+            <param name="id">The project identifier.</param>
+            <param name="updateProjectDto">The payload used to update the project.</param>
+            <returns>The updated project details wrapped in <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.Common.ApiResponse`1"/>.</returns>
+            <response code="200">The project was successfully updated.</response>
+            <response code="400">The request body is invalid.</response>
+            <response code="404">A project with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.Delete(System.Int32)">
+            <summary>
+            Deletes a project by its identifier.
+            </summary>
+            <param name="id">The project identifier.</param>
+            <returns>Result of the delete operation wrapped in</returns>
+            <response code="200">The project was successfully deleted.</response>
+            <response code="404">A project with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.GetMembers(System.Int32)">
+            <summary>
+            Retrieves a list of members for a specific project.
+            </summary>
+            <param name="projectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.GetAvailableUsersToAdd(System.Int32)">
+            <summary>
+            Retrieves a list of users who are not currently members of the specified project and can be added as members.
+            </summary>
+            <param name="projectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.AddMember(System.Int32,ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AddProjectMemberDto)">
+            <summary>
+            Adds a member to a project.
+            </summary>
+            <param name="projectId"></param>
+            <param name="addProjectMemberDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.RemoveMember(System.Int32,System.String)">
+            <summary>
+            Removes a member from a project.
+            </summary>
+            <param name="projectId"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.ProjectsController.GetPending">
+            <summary>
+            Retrieves all unapproved (pending) projects. Admin only.
+            </summary>
+            <returns>List of pending projects.</returns>
+            <response code="200">Returns the list of pending projects.</response>
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController">
+            <summary>
+            Controller for managing task items.
+            </summary>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.#ctor(ASP_NET_20._TaskFlow_FIle_attachment.Services.ITaskItemService,ASP_NET_20._TaskFlow_FIle_attachment.Services.IProjectService,Microsoft.AspNetCore.Authorization.IAuthorizationService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController"/> class.
+            </summary>
+            <param name="taskItemService">Service for task item operations.</param>
+            <param name="projectService"></param>
+            <param name="authorizationService"></param>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.Create(ASP_NET_20._TaskFlow_FIle_attachment.DTOs.CreateTaskItemDto)">
+            <summary>
+            Creates a new task item.
+            </summary>
+            <param name="createTaskItem">The payload used to create the task item.</param>
+            <returns>The created task item wrapped in <see cref="T:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemResponseDto"/>.</returns>
+            <response code="201">The task item was successfully created.</response>
+            <response code="400">The request body is invalid.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.GetAll">
+            <summary>
+            Retrieves all task items.
+            </summary>
+            <returns>A list of all task items.</returns>
+            <response code="200">Returns the list of task items.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.GetById(System.Int32)">
+            <summary>
+            Retrieves a task item by its identifier.
+            </summary>
+            <param name="id">The task item identifier.</param>
+            <returns>The task item details.</returns>
+            <response code="200">The task item was found and returned.</response>
+            <response code="404">A task item with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.GetByProjectId(System.Int32)">
+            <summary>
+            Retrieves all task items for a specific project.
+            </summary>
+            <param name="projectId">The project identifier.</param>
+            <returns>A list of task items for the specified project.</returns>
+            <response code="200">Returns the list of task items for the project.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.Update(System.Int32,ASP_NET_20._TaskFlow_FIle_attachment.DTOs.UpdateTaskItemDto)">
+            <summary>
+            Updates an existing task item.
+            </summary>
+            <param name="id">The task item identifier.</param>
+            <param name="updateTaskItem">The payload used to update the task item.</param>
+            <returns>The updated task item details.</returns>
+            <response code="200">The task item was successfully updated.</response>
+            <response code="400">The request body is invalid.</response>
+            <response code="404">A task item with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.Delete(System.Int32)">
+            <summary>
+            Deletes a task item by its identifier.
+            </summary>
+            <param name="id">The task item identifier.</param>
+            <returns>No content if the task item was deleted.</returns>
+            <response code="200">The task item was successfully deleted.</response>
+            <response code="404">A task item with the specified identifier was not found.</response>
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Controllers.TaskItemsController.GetPaged(ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams)">
+            <summary>
+            Retrieves a paged, filtered, and sorted list of task items.
+            </summary>
+            <param name="queryParams">
+            Query parameters for pagination, filtering, searching, and sorting task items.
+            </param>
+            <returns>
+            A paged result containing task items that match the specified criteria, wrapped in .
+            </returns>
+            <response code="200">Returns the paged list of task items.</response>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.RegisterRequestDto.FirstName">
+            <summary>
+            User Name
+            </summary>
+            <example>John</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.RegisterRequestDto.LastName">
+            <summary>
+            User LastName
+            </summary>
+            <example>Doe</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.RegisterRequestDto.Email">
+            <summary>
+            User Email
+            </summary>
+            <example>john@doe.com</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.RegisterRequestDto.Password">
+            <summary>
+            Password
+            </summary>
+            <example>P@ssword123!</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.RegisterRequestDto.ConfirmPassword">
+            <summary>
+            Confirmed Password
+            </summary>
+            <example>P@ssword123!</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.LoginRequestDto.Email">
+            <summary>
+            User Email
+            </summary>
+            <example>john@doe.com</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.LoginRequestDto.Password">
+            <summary>
+            Password
+            </summary>
+            <example>P@ssword123!</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.AccessToken">
+            <summary>
+            Access token
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.ExpiresAt">
+            <summary>
+            Token Expires date 
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.RefreshToken">
+            <summary>
+            Refresh token
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.RefreshTokenExpiresAt">
+            <summary>
+            Token Expires date 
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.Email">
+            <summary>
+            User Email
+            </summary>
+            <example>john@doe.com</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.AuthResponseDto.Roles">
+            <summary>
+            User Roles
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.CreateProjectDto.Name">
+            <summary>
+            Project name
+            </summary>
+            <example>My new project</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.CreateProjectDto.Description">
+            <summary>
+            Project description
+            </summary>
+            <example>Description for my project</example>
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams">
+            <summary>
+            Represents query parameters for paginating, filtering, searching, and sorting task items.
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Page">
+            <summary>
+            The page number to retrieve.
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Size">
+            <summary>
+            The number of items per page.
+            </summary>
+            <example>10</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Sort">
+            <summary>
+            The field name to sort by.
+            </summary>
+            <example>title</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.SortDirection">
+            <summary>
+            The direction of sorting: "asc" for ascending or "desc" for descending.
+            </summary>
+            <example>asc</example>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Status">
+            <summary>
+            Filter by task status.
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Priority">
+            <summary>
+            Filter by task priority.
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.Search">
+            <summary>
+            Search term to filter task items by title or description.
+            </summary>
+        </member>
+        <member name="P:ASP_NET_20._TaskFlow_FIle_attachment.DTOs.TaskItemQueryParams.ProjectId">
+            <summary>
+            Filter by the project identifier.
+            </summary>
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddPriorityToTaskItem">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddPriorityToTaskItem.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddPriorityToTaskItem.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddPriorityToTaskItem.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddApplicationUser">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddApplicationUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddApplicationUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddApplicationUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddRefreshToken">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddRefreshToken.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddRefreshToken.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddRefreshToken.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.MakeReplaceByJwtIdNull">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.MakeReplaceByJwtIdNull.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.MakeReplaceByJwtIdNull.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.MakeReplaceByJwtIdNull.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddOwnershipAndMemebers">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddOwnershipAndMemebers.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddOwnershipAndMemebers.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddOwnershipAndMemebers.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddTaskAttachment">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddTaskAttachment.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddTaskAttachment.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddTaskAttachment.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddProjectIsApproved">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddProjectIsApproved.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddProjectIsApproved.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:ASP_NET_20._TaskFlow_FIle_attachment.Migrations.AddProjectIsApproved.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
